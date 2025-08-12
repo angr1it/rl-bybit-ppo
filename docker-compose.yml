@@ -1,0 +1,12 @@
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=rlbybit
+      - PYTHONUNBUFFERED=1
+    command: >
+      bash -lc "jupyter lab --ip=0.0.0.0 --allow-root --no-browser --ServerApp.token=${JUPYTER_TOKEN}"

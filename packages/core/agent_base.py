@@ -1,0 +1,19 @@
+from __future__ import annotations
+
+from typing import Protocol
+import numpy as np
+
+class Agent(Protocol):
+    """Универсальный интерфейс модели под трейдинг-симуляцию."""
+    # Обучение: для RL — vec_env + kwargs; для супервизии — X, y (или иной набор).
+    def fit(self, *args, **kwargs) -> None: ...
+    # Выдача действия по наблюдению среды.
+    def act(self, obs: np.ndarray, deterministic: bool = True) -> int: ...
+    # Сохранение / загрузка весов.
+    def save(self, path: str) -> None: ...
+    @classmethod
+    def load(cls, path: str) -> "Agent": ...
+    # Метаданные (для артефактов).
+    def to_meta(self) -> dict: ...
+    @classmethod
+    def from_meta(cls, meta: dict) -> "Agent": ...

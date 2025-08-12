@@ -1,0 +1,6 @@
+
+defaults:
+  - env: bybit_daily
+  - model: ppo_transformer
+
+wandb: false
