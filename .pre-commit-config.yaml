@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: bash -c 'pytest --cov=packages --cov-report=term-missing || true'
+        language: system
+        pass_filenames: false
+        always_run: true
+        files: ''
