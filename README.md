@@ -1,9 +1,13 @@
 # rl-bybit-ppo-template
 
-Стартовый шаблон репозитория для RL-трейдинга на **Bybit** (дни/недели), с тремя слоями:
-1) **Данные + бэктестинг** (ccxt, Parquet/DuckDB, vectorbt)
-2) **RL-слой** (Stable-Baselines3 PPO, кастомный Gymnasium-энв)
-3) **Валидация** (walk-forward / purged k-fold, базовые метрики)
+A modular framework for training and evaluating reinforcement-learning trading strategies on **Bybit** (daily/weekly intervals).
+It is organised into separate layers:
+
+1. **Data & backtesting** – ccxt market access, Parquet/DuckDB storage and vectorbt runners.
+2. **RL layer** – Stable-Baselines3 PPO with custom Gymnasium environments.
+3. **Validation** – walk-forward / purged k-fold splits and basic metrics.
+
+See [`docs/`](docs/index.md) for detailed documentation of the main components.
 
 ## Быстрый старт
 
@@ -58,7 +62,6 @@ config/        # yaml-конфиги (опц.)
 - Базовая биржа — **Bybit** (через ccxt). Для теста включайте `--sandbox true` или переменную окружения `SANDBOX=true`.
 - Бэктест — **vectorbt**, для «пошагового» режима можете добавить Backtrader.
 - RL — **Stable-Baselines3 / PPO** (MlpPolicy); позже можно перейти к `RecurrentPPO` из sb3-contrib.
-
 
 ---
 
